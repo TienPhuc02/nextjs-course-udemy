@@ -18,6 +18,7 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import MoreIcon from "@mui/icons-material/MoreVert";
+import Link from "next/link";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -95,8 +96,15 @@ export default function AppBarHeader() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem>
+        <Link
+          href={"/profile"}
+          style={{ color: "unset", textDecoration: "none" }}
+        >
+          Profile
+        </Link>
+      </MenuItem>
+      <MenuItem onClick={handleMenuClose}>Log Out</MenuItem>
     </Menu>
   );
 
@@ -181,11 +189,15 @@ export default function AppBarHeader() {
                 gap: "20px",
                 alignItems: "center",
                 cursor: "pointer",
+                ">a": {
+                  color: "unset",
+                  textDecoration: "none",
+                },
               }}
             >
-              <span>Playlists</span>
-              <span>Likes</span>
-              <span>Upload</span>
+              <Link href={"/playlist"}>Playlists</Link>
+              <Link href={"/like"}>Likes</Link>
+              <Link href={"/upload"}>Upload</Link>
               <Avatar onClick={handleProfileMenuOpen}>PH</Avatar>
               {/* <IconButton
                 size="large"
@@ -219,4 +231,4 @@ export default function AppBarHeader() {
     </Box>
   );
 }
-//inspec thì thấy MuiAppBar -> đoán nó là component AppBar ,prop sx cũng để css MUI
+//inspect thì thấy MuiAppBar -> đoán nó là component AppBar ,prop sx cũng để css  các component của MUI
