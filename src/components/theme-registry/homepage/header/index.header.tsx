@@ -16,6 +16,7 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import Container from "@mui/material/Container";
+import Avatar from "@mui/material/Avatar";
 import MoreIcon from "@mui/icons-material/MoreVert";
 
 const Search = styled("div")(({ theme }) => ({
@@ -87,16 +88,10 @@ export default function AppBarHeader() {
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
-      anchorOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
+      transformOrigin={{ horizontal: "right", vertical: "top" }}
+      anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       id={menuId}
       keepMounted
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
@@ -159,7 +154,7 @@ export default function AppBarHeader() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" sx={{ backgroundColor: "#333" }}>
         <Container>
           <Toolbar>
             <Typography
@@ -191,7 +186,8 @@ export default function AppBarHeader() {
               <span>Playlists</span>
               <span>Likes</span>
               <span>Upload</span>
-              <IconButton
+              <Avatar onClick={handleProfileMenuOpen}>PH</Avatar>
+              {/* <IconButton
                 size="large"
                 edge="end"
                 aria-label="account of current user"
@@ -201,7 +197,7 @@ export default function AppBarHeader() {
                 color="inherit"
               >
                 <AccountCircle />
-              </IconButton>
+              </IconButton> */}
             </Box>
             <Box sx={{ display: { xs: "flex", md: "none" } }}>
               <IconButton
@@ -223,3 +219,4 @@ export default function AppBarHeader() {
     </Box>
   );
 }
+//inspec thì thấy MuiAppBar -> đoán nó là component AppBar ,prop sx cũng để css MUI
