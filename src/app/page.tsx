@@ -7,6 +7,8 @@ export default function HomePage() {
       <div className="main-content-slider">
         <Container>
           <MainContentHomePage />
+          <MainContentHomePage />
+          <MainContentHomePage />
         </Container>
       </div>
     </div>

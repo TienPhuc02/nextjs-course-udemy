@@ -3,38 +3,106 @@ import React from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { Box } from "@mui/material";
+import Button from "@mui/material/Button/Button";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import Divider from "@mui/material/Divider";
 import { Settings } from "react-slick";
 const MainContentHomePage = () => {
+  const NextArrow = (props: any) => {
+    return (
+      <Button
+        variant="outlined"
+        onClick={props.onClick}
+        sx={{
+          position: "absolute",
+          right: 0,
+          top: "50%",
+          zIndex: 2,
+          padding: 0,
+          minWidth: 35,
+        }}
+      >
+        <ChevronRightIcon />
+      </Button>
+    );
+  };
+
+  const PrevArrow = (props: any) => {
+    return (
+      <Button
+        variant="outlined"
+        onClick={props.onClick}
+        sx={{
+          position: "absolute",
+          top: "50%",
+          zIndex: 2,
+          padding: 0,
+          minWidth: 35,
+        }}
+      >
+        <ChevronLeftIcon />
+      </Button>
+    );
+  };
   var settings: Settings = {
     dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 1,
-    nextArrow: <>next</>,
-    prevArrow: <>prev</>,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   };
   return (
-    <Slider {...settings}>
-      <div>
-        <h1>1</h1>
-      </div>
-      <div>
-        <h1>2</h1>
-      </div>
-      <div>
-        <h1>3</h1>
-      </div>
-      <div>
-        <h1>4</h1>
-      </div>
-      <div>
-        <h1>5</h1>
-      </div>
-      <div>
-        <h1>6</h1>
-      </div>
-    </Slider>
+    <Box
+      sx={{
+        margin: "0px 50px",
+        ".abc": {
+          padding: "0 10px",
+          margin: "20px 0px",
+        },
+        h3: {
+          border: "1px solid #ccc",
+          padding: "20px",
+          height: "200px",
+        },
+      }}
+    >
+      <h2> Multiple tracks </h2>
+
+      <Slider {...settings}>
+        <div className="abc">
+          <h3>Track 1</h3>
+        </div>
+        <div className="abc">
+          <h3>Track 2</h3>
+        </div>
+        <div className="abc">
+          <h3>Track 3</h3>
+        </div>
+        <div className="abc">
+          <h3>Track 4</h3>
+        </div>
+        <div className="abc">
+          <h3>Track 5</h3>
+        </div>
+        <div className="abc">
+          <h3>Track 6</h3>
+        </div>
+        <div className="abc">
+          <h3>Track 7</h3>
+        </div>
+        <div className="abc">
+          <h3>Track 8</h3>
+        </div>
+        <div className="abc">
+          <h3>Track 9</h3>
+        </div>
+      </Slider>
+      <Divider />
+    </Box>
   );
 };
 
