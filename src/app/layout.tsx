@@ -1,5 +1,6 @@
 import ThemeRegistry from "@/components/theme-registry/theme.registry";
 import "../styles/globals.css";
+import AppBarHeader from "@/components/theme-registry/homepage/header/index.header";
 export default function RootLayout({
   children,
 }: {
@@ -8,7 +9,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ThemeRegistry>{children}</ThemeRegistry>
+        <ThemeRegistry>
+          <AppBarHeader />
+          {children}
+        </ThemeRegistry>
       </body>
     </html>
   );
