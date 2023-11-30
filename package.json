@@ -1,6 +1,6 @@
 {
-  "name": "nextjs-mui-ts-template-by-hoidanit",
-  "author": "Hỏi Dân IT với Eric",
+  "name": "nextjs-mui-ts-template-by-gumaphucyusi",
+  "author": "Tien Phuc",
   "description": "https://www.youtube.com/@hoidanit",
   "version": "1.0.0",
   "private": true,
@@ -20,6 +20,7 @@
     "next": "13.4.19",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-h5-audio-player": "^3.9.0",
     "react-slick": "0.29.0",
     "slick-carousel": "1.8.1",
     "styled-components": "^6.1.1"

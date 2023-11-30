@@ -1,4 +1,4 @@
-import MainContentHomePage from "@/components/theme-registry/homepage/main-content/index.main";
+import MainContentHomePage from "@/components/homepage/main-content/index.main";
 import { Container } from "@mui/material";
 
 export default function HomePage() {

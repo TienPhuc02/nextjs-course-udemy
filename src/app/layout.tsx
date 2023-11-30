@@ -1,6 +1,7 @@
 import ThemeRegistry from "@/components/theme-registry/theme.registry";
 import "../styles/globals.css";
-import AppBarHeader from "@/components/theme-registry/homepage/header/index.header";
+import AppBarHeader from "@/components/homepage/header/index.header";
+import FooterHomePage from "@/components/homepage/footer/index.footer";
 export default function RootLayout({
   children,
 }: {
@@ -12,6 +13,7 @@ export default function RootLayout({
         <ThemeRegistry>
           <AppBarHeader />
           {children}
+          <FooterHomePage />
         </ThemeRegistry>
       </body>
     </html>
