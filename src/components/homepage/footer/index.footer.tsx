@@ -7,6 +7,8 @@ import "react-h5-audio-player/lib/styles.css";
 const FooterHomePage = () => {
   const hasMounted = useHasMounted();
   if (!hasMounted) return <></>;
+  console.log(process.env.NEXT_PUBLIC_BACKEND_URL);
+  // muốn client component lấy được biến môi trường  thì  thêm NEXT_PUBLIC
   return (
     <div>
       {" "}
