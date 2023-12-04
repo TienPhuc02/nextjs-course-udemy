@@ -9,11 +9,22 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import Divider from "@mui/material/Divider";
 import { Settings } from "react-slick";
-const MainContentHomePage = () => {
+interface IProps {
+  data: ITrackTop[];
+  title: string;
+}
+const MainContentHomePage = (props: IProps) => {
+  const { data, title } = props;
+  console.log(
+    "🚀 ~ file: index.main.tsx:18 ~ MainContentHomePage ~ data:",
+    data
+  );
+
   const NextArrow = (props: any) => {
     return (
       <Button
-        variant="outlined"
+        color="inherit"
+        variant="contained"
         onClick={props.onClick}
         sx={{
           position: "absolute",
@@ -32,11 +43,12 @@ const MainContentHomePage = () => {
   const PrevArrow = (props: any) => {
     return (
       <Button
-        variant="outlined"
+        color="inherit"
+        variant="contained"
         onClick={props.onClick}
         sx={{
           position: "absolute",
-          top: "50%",
+          top: "35%",
           zIndex: 2,
           padding: 0,
           minWidth: 35,
@@ -46,6 +58,7 @@ const MainContentHomePage = () => {
       </Button>
     );
   };
+
   var settings: Settings = {
     dots: false,
     infinite: true,
@@ -55,13 +68,36 @@ const MainContentHomePage = () => {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };
+
+  const renderSliderData = () => {
+    return (
+      <Slider {...settings}>
+        {data
+          ? data.map((item) => (
+              <div key={item._id}>
+                <div className="track">
+                  <img
+                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}images/${item.imgUrl}`}
+                    alt={title}
+                  />
+                  <h4 className="font-bold">{item.title}</h4>
+                  <h5 className="font-normal">{item.description}</h5>
+                </div>
+              </div>
+            ))
+          : null}
+      </Slider>
+    );
+  };
+
   return (
     <Box
       sx={{
         margin: "0px 50px",
-        ".abc": {
-          padding: "0 10px",
+        ".track": {
+          padding: "0px 10px 45px 0px",
           margin: "20px 0px",
+          img: {},
         },
         h3: {
           border: "1px solid #ccc",
@@ -70,37 +106,8 @@ const MainContentHomePage = () => {
         },
       }}
     >
-      <h2> Multiple tracks </h2>
-
-      <Slider {...settings}>
-        <div className="abc">
-          <h3>Track 1</h3>
-        </div>
-        <div className="abc">
-          <h3>Track 2</h3>
-        </div>
-        <div className="abc">
-          <h3>Track 3</h3>
-        </div>
-        <div className="abc">
-          <h3>Track 4</h3>
-        </div>
-        <div className="abc">
-          <h3>Track 5</h3>
-        </div>
-        <div className="abc">
-          <h3>Track 6</h3>
-        </div>
-        <div className="abc">
-          <h3>Track 7</h3>
-        </div>
-        <div className="abc">
-          <h3>Track 8</h3>
-        </div>
-        <div className="abc">
-          <h3>Track 9</h3>
-        </div>
-      </Slider>
+      <span className="font-bold text-[20px] "> {title} </span>
+      {data && renderSliderData()}
       <Divider />
     </Box>
   );

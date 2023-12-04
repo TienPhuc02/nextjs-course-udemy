@@ -2,30 +2,28 @@ import MainContentHomePage from "@/components/homepage/main-content/index.main";
 import { Container } from "@mui/material";
 import { sendRequest } from "@/utils/api";
 export default async function HomePage() {
-  // const res = await fetch("http://localhost:8000/api/v1/tracks/top", {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: JSON.stringify({
-  //     category: "CHILL",
-  //     limit: 10,
-  //   }),
-  // });//axios
-  // console.log("🚀 ~ file: page.tsx:15 ~ HomePage ~ res:", await res.json());
-  const res = await sendRequest<IBackendRes<ITrackTop[]>>({
+  const chills = await sendRequest<IBackendRes<ITrackTop[]>>({
     url: "http://localhost:8000/api/v1/tracks/top",
     method: "POST",
     body: { category: "CHILL", limit: 10 },
   });
-  console.log("🚀 ~ file: page.tsx:20 ~ HomePage ~ res:", res);
+  const workouts = await sendRequest<IBackendRes<ITrackTop[]>>({
+    url: "http://localhost:8000/api/v1/tracks/top",
+    method: "POST",
+    body: { category: "WORKOUT", limit: 10 },
+  });
+  const parties = await sendRequest<IBackendRes<ITrackTop[]>>({
+    url: "http://localhost:8000/api/v1/tracks/top",
+    method: "POST",
+    body: { category: "PARTY", limit: 10 },
+  });
   return (
     <div className="home-page-main">
       <div className="main-content-slider">
         <Container>
-          <MainContentHomePage />
-          <MainContentHomePage />
-          <MainContentHomePage />
+          <MainContentHomePage data={chills?.data ?? []} title={"Chill"} />
+          <MainContentHomePage data={workouts?.data ?? []} title={"Workout"} />
+          <MainContentHomePage data={parties?.data ?? []} title={"Party"} />
         </Container>
       </div>
     </div>
