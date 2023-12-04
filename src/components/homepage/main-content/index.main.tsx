@@ -29,7 +29,7 @@ const MainContentHomePage = (props: IProps) => {
         sx={{
           position: "absolute",
           right: 0,
-          top: "50%",
+          top: "35%",
           zIndex: 2,
           padding: 0,
           minWidth: 35,
