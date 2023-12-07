@@ -9,6 +9,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import Divider from "@mui/material/Divider";
 import { Settings } from "react-slick";
+import Link from "next/link";
 interface IProps {
   data: ITrackTop[];
   title: string;
@@ -80,7 +81,9 @@ const MainContentHomePage = (props: IProps) => {
                     src={`${process.env.NEXT_PUBLIC_BACKEND_URL}images/${item.imgUrl}`}
                     alt={title}
                   />
-                  <h4 className="font-bold">{item.title}</h4>
+                  <Link href={`/track/${item._id}`}>
+                    <h4 className="font-bold ">{item.title}</h4>
+                  </Link>
                   <h5 className="font-normal">{item.description}</h5>
                 </div>
               </div>
