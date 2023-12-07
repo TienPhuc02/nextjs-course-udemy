@@ -81,7 +81,7 @@ const MainContentHomePage = (props: IProps) => {
                     src={`${process.env.NEXT_PUBLIC_BACKEND_URL}images/${item.imgUrl}`}
                     alt={title}
                   />
-                  <Link href={`/track/${item._id}`}>
+                  <Link href={`/track/${item._id}?audio=${item.trackUrl}`}>
                     <h4 className="font-bold ">{item.title}</h4>
                   </Link>
                   <h5 className="font-normal">{item.description}</h5>
