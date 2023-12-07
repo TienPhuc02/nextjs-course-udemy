@@ -1,12 +1,16 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import WaveSurfer from "wavesurfer.js";
 const WaveTrack = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const element = document.getElementById("wave-track");
-    if (element) {
+    console.log(
+      "🚀 ~ file: wave.track.tsx:6 ~ WaveTrack ~ containerRef:",
+      containerRef.current
+    );
+    if (containerRef.current) {
       WaveSurfer.create({
-        container: element,
+        container: containerRef.current,
         waveColor: "rgb(200, 0, 200)",
         progressColor: "rgb(100, 0, 100)",
         url: `/tracks/hoidanit.m4a`,
@@ -14,7 +18,7 @@ const WaveTrack = () => {
     }
     // vì chạy ở development nên react chạy 2 lần
   }, []);
-  return <div id="wave-track">WaveTrack</div>;
+  return <div ref={containerRef}>WaveTrack</div>;
 };
 
 export default WaveTrack;
